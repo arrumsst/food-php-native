@@ -1,0 +1,406 @@
+:root {
+    --maroon: #800000;
+    --dark-maroon: #5a0000;
+    --yellow: #FFD700;
+    --light-yellow: #FFF0AA;
+    --white: #ffffff;
+    --light-gray: #f5f5f5;
+    --dark-gray: #333333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--light-gray) 0%, var(--white) 50%, #fafafa 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: var(--dark-gray);
+    line-height: 1.6;
+}
+
+/* Main Container */
+.main-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(128, 0, 0, 0.15);
+    overflow: hidden;
+    position: relative;
+}
+
+.main-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--maroon), var(--yellow), var(--maroon));
+    z-index: 1;
+}
+
+/* Header Styling */
+h2 {
+    background: linear-gradient(135deg, var(--maroon) 0%, var(--dark-maroon) 100%);
+    color: var(--white);
+    padding: 40px;
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: 700;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+h2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="10" cy="10" r="1" fill="rgba(255,215,0,0.1)"/><circle cx="90" cy="20" r="1.5" fill="rgba(255,215,0,0.1)"/><circle cx="20" cy="90" r="1" fill="rgba(255,215,0,0.1)"/><circle cx="80" cy="80" r="1.2" fill="rgba(255,215,0,0.1)"/><circle cx="50" cy="30" r="0.8" fill="rgba(255,215,0,0.1)"/><circle cx="30" cy="60" r="1.3" fill="rgba(255,215,0,0.1)"/></svg>');
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* Form Container */
+form {
+    padding: 50px;
+    background: var(--white);
+}
+
+/* Section Headers */
+h3 {
+    color: var(--maroon);
+    font-size: 1.8em;
+    margin-bottom: 25px;
+    margin-top: 30px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid var(--yellow);
+    position: relative;
+    font-weight: 600;
+}
+
+h3:first-of-type {
+    margin-top: 0;
+}
+
+h3::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 80px;
+    height: 3px;
+    background: var(--maroon);
+    border-radius: 2px;
+}
+
+/* Form Labels and Inputs */
+label {
+    display: block;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: var(--dark-gray);
+    font-size: 1.1em;
+}
+
+input[type="text"] {
+    width: 300px;
+    padding: 15px 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 1em;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+    background: var(--white);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--yellow);
+    box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Pesanan Container */
+#pesanan-container {
+    margin: 30px 0;
+    min-height: 100px;
+}
+
+/* Pesanan Item Styling */
+.pesanan-item {
+    background: linear-gradient(135deg, var(--light-gray) 0%, #fafafa 100%);
+    border: 2px solid #e8e8e8;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 20px;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.pesanan-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(128, 0, 0, 0.15);
+    border-color: var(--yellow);
+}
+
+.pesanan-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--yellow) 0%, var(--maroon) 100%);
+    border-radius: 15px 0 0 15px;
+}
+
+/* Form Controls in Pesanan */
+.pesanan-item select,
+.pesanan-item input[type="number"] {
+    width: 200px;
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 1em;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    background: var(--white);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.pesanan-item select:focus,
+.pesanan-item input[type="number"]:focus {
+    outline: none;
+    border-color: var(--yellow);
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+    transform: translateY(-1px);
+}
+
+.pesanan-item select {
+    cursor: pointer;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23666" stroke-width="2"><polyline points="6,9 12,15 18,9"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    appearance: none;
+    padding-right: 40px;
+}
+
+.pesanan-item input[type="number"] {
+    text-align: center;
+    font-weight: 600;
+    width: 100px;
+}
+
+/* Button Styling */
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Add Menu Button */
+button[onclick="tambahPesanan()"] {
+    background: linear-gradient(135deg, var(--yellow) 0%, #ffd700 100%);
+    color: var(--dark-gray);
+    padding: 15px 30px;
+    font-size: 1.1em;
+    margin: 20px 10px 30px 0;
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+button[onclick="tambahPesanan()"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+    filter: brightness(1.05);
+}
+
+/* Submit Button */
+button[type="submit"] {
+    background: linear-gradient(135deg, var(--maroon) 0%, var(--dark-maroon) 100%);
+    color: var(--white);
+    padding: 18px 40px;
+    font-size: 1.2em;
+    margin: 10px 15px 10px 0;
+    box-shadow: 0 5px 20px rgba(128, 0, 0, 0.3);
+    min-width: 180px;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(128, 0, 0, 0.4);
+    filter: brightness(1.1);
+}
+
+/* Cancel Button */
+button[onclick*="index.php"] {
+    background: transparent;
+    color: var(--dark-gray);
+    border: 2px solid var(--dark-gray);
+    padding: 16px 35px;
+    font-size: 1.1em;
+    margin: 10px;
+    min-width: 150px;
+}
+
+button[onclick*="index.php"]:hover {
+    background: var(--dark-gray);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(51, 51, 51, 0.3);
+}
+
+/* Button Container */
+.button-container {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 2px solid var(--light-gray);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .main-container {
+        margin: 0;
+        border-radius: 15px;
+    }
+    
+    h2 {
+        font-size: 2em;
+        padding: 30px 20px;
+    }
+    
+    form {
+        padding: 30px 20px;
+    }
+    
+    h3 {
+        font-size: 1.5em;
+    }
+    
+    input[type="text"] {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 8px;
+    }
+    
+    label {
+        margin-bottom: 15px;
+    }
+    
+    .pesanan-item {
+        padding: 20px;
+    }
+    
+    .pesanan-item select,
+    .pesanan-item input[type="number"] {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    
+    button {
+        width: 100%;
+        max-width: 300px;
+        margin: 10px 0;
+    }
+    
+    .button-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+}
+
+/* Animation Effects */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pesanan-item {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+/* Loading States */
+.loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Focus Indicators */
+*:focus {
+    outline: 3px solid rgba(255, 215, 0, 0.5);
+    outline-offset: 2px;
+}
+
+button:focus {
+    outline: 3px solid rgba(255, 255, 255, 0.8);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--light-gray);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--maroon), var(--yellow));
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(var(--dark-maroon), var(--yellow));
+}
