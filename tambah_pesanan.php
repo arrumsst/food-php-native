@@ -58,7 +58,6 @@ while ($row = mysqli_fetch_assoc($res)) {
         <h3>Pesanan</h3>
         <div id="pesanan-container"></div>
         
-        <!-- Template pesanan menggunakan template HTML5 -->
         <template id="pesanan-template">
             <div class="pesanan-item" style="margin-bottom: 10px;">
                 <select class="produk" required>
