@@ -39,6 +39,14 @@ while ($row = mysqli_fetch_assoc($result)) {
 <head>
     <title>Riwayat Pesanan</title>
     <link rel="stylesheet" href="sty2.css">
+    <style>
+        .action-buttons .btn {
+            margin: 5px;
+        }
+        .pesanan-actions {
+            margin: 10px 0;
+        }
+    </style>
 </head>
 <body>
     <h2 style="text-align:center;">Riwayat Semua Pesanan</h2>
@@ -55,6 +63,10 @@ while ($row = mysqli_fetch_assoc($result)) {
     <?php else: ?>
         <?php foreach ($pesananData as $id => $pesanan): ?>
             <div class="pesanan">
+                <div class="pesanan-actions">
+                    <a href="edit_pesanan.php?id=<?= $id ?>" class="btn">Edit</a>
+                    <a href="hapus_pesanan.php?id=<?= $id ?>" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus pesanan ini?')">Hapus</a>
+                </div>
                 <h3>
                     Pesanan ID: <?= $id ?> | Pelanggan: <?= htmlspecialchars($pesanan['pelanggan']) ?> (<?= htmlspecialchars($pesanan['kelas']) ?>) <br>
                     Waktu Pesanan: <?= $pesanan['waktu_pesanan'] ?>
@@ -96,6 +108,5 @@ while ($row = mysqli_fetch_assoc($result)) {
             </div>
         <?php endforeach; ?>
     <?php endif; ?>
-    </div>
 </body>
 </html>
