@@ -71,8 +71,8 @@ if (isset($_POST['simpan'])) {
             $jumlah = (int) $jumlahInput[$index];
         
             if ($id_produk && $id_varian && $jumlah > 0) {
-                // Ambil harga varian
-                $resultHarga = mysqli_query($conn, "SELECT harga FROM varian WHERE id_varian = '$id_varian'");
+                // Ambil harga produk
+                $resultHarga = mysqli_query($conn, "SELECT harga FROM produk WHERE id_produk = '$id_produk'");
                 $dataHarga = mysqli_fetch_assoc($resultHarga);
                 $harga = $dataHarga ? $dataHarga['harga'] : 0;
         
