@@ -83,7 +83,7 @@ if (isset($_POST['simpan'])) {
             }
         }        
 
-        echo "<script>alert('Data berhasil diperbarui!'); window.location.href='riwayat_pesanan.php';</script>";
+        echo "<script>alert('Data berhasil diperbarui!'); window.location.href='lihat_pesanan.php';</script>";
         exit;
     } else {
         echo "<script>alert('Gagal memperbarui data.');</script>";
