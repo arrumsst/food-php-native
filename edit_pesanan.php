@@ -8,7 +8,6 @@ if (!isset($_GET['id'])) {
 
 $id = $_GET['id'];
 
-// Ambil data pesanan
 $query = "
     SELECT p.*, pel.nama, pel.kelas 
     FROM pesanan p 
@@ -23,16 +22,12 @@ if (!$data) {
     exit;
 }
 
-// Update jika form dikirim
 if (isset($_POST['simpan'])) {
     $nama = $_POST['nama'];
     $kelas = $_POST['kelas'];
     $waktu = $_POST['waktu'];
 
-    // Update data pelanggan
     $updatePel = mysqli_query($conn, "UPDATE pelanggan SET nama='$nama', kelas='$kelas' WHERE id_pelanggan='{$data['id_pelanggan']}'");
-
-    // Update waktu pesanan
     $updatePesanan = mysqli_query($conn, "UPDATE pesanan SET waktu_pesanan='$waktu' WHERE id_pesanan='$id'");
 
     if ($updatePel && $updatePesanan) {
@@ -47,21 +42,30 @@ if (isset($_POST['simpan'])) {
 <html>
 <head>
     <title>Edit Pesanan</title>
+    <link rel="stylesheet" href="sty3.css">
 </head>
 <body>
-    <h2>Edit Pesanan ID <?= $id ?></h2>
-    <form method="post">
-        <label>Nama Pelanggan:</label><br>
-        <input type="text" name="nama" value="<?= htmlspecialchars($data['nama']) ?>" required><br><br>
+    <div class="main-container">
+        <h2>Edit Pesanan ID <?= $id ?></h2>
+        <form method="post">
+            <h3>Data Pelanggan</h3>
+            <label>Nama Pelanggan:
+                <input type="text" name="nama" value="<?= htmlspecialchars($data['nama']) ?>" required>
+            </label>
 
-        <label>Kelas:</label><br>
-        <input type="text" name="kelas" value="<?= htmlspecialchars($data['kelas']) ?>" required><br><br>
+            <label>Kelas:
+                <input type="text" name="kelas" value="<?= htmlspecialchars($data['kelas']) ?>" required>
+            </label>
 
-        <label>Waktu Pesanan:</label><br>
-        <input type="datetime-local" name="waktu" value="<?= date('Y-m-d\TH:i', strtotime($data['waktu_pesanan'])) ?>" required><br><br>
+            <h3>Waktu Pesanan</h3>
+            <label>Waktu:
+                <input type="datetime-local" name="waktu" value="<?= date('Y-m-d\TH:i', strtotime($data['waktu_pesanan'])) ?>" required>
+            </label>
 
-        <button type="submit" name="simpan">Simpan Perubahan</button>
-        <a href="riwayat_pesanan.php">Kembali</a>
-    </form>
+            <br><br>
+            <button type="submit" name="simpan">Simpan Perubahan</button>
+            <button type="button" onclick="window.location.href='riwayat_pesanan.php'">Kembali</button>
+        </form>
+    </div>
 </body>
 </html>
