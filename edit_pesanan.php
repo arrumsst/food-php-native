@@ -69,11 +69,19 @@ if (isset($_POST['simpan'])) {
         foreach ($produkInput as $index => $id_produk) {
             $id_varian = $varianInput[$index];
             $jumlah = (int) $jumlahInput[$index];
-
+        
             if ($id_produk && $id_varian && $jumlah > 0) {
-                mysqli_query($conn, "INSERT INTO detail_pesanan (id_pesanan, id_produk, id_varian, jumlah) VALUES ('$id', '$id_produk', '$id_varian', '$jumlah')");
+                // Ambil harga varian
+                $resultHarga = mysqli_query($conn, "SELECT harga FROM varian WHERE id_varian = '$id_varian'");
+                $dataHarga = mysqli_fetch_assoc($resultHarga);
+                $harga = $dataHarga ? $dataHarga['harga'] : 0;
+        
+                $total_harga = $harga * $jumlah;
+        
+                // Insert dengan total_harga
+                mysqli_query($conn, "INSERT INTO detail_pesanan (id_pesanan, id_produk, id_varian, jumlah, total_harga) VALUES ('$id', '$id_produk', '$id_varian', '$jumlah', '$total_harga')");
             }
-        }
+        }        
 
         echo "<script>alert('Data berhasil diperbarui!'); window.location.href='riwayat_pesanan.php';</script>";
         exit;
